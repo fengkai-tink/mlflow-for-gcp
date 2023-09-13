@@ -23,7 +23,11 @@ resource "google_secret_manager_secret" "db_login_ml_flow" {
   secret_id = "mlflow_tracking_username"
   project   = var.project_name
   replication {
-    automatic = true
+    user_managed {
+      replicas {
+        location = var.region
+      }
+  }
   }
 }
 
@@ -44,9 +48,15 @@ resource "random_password" "db_password_ml_flow" {
 resource "google_secret_manager_secret" "db_password_ml_flow" {
   secret_id = "mlflow_tracking_password"
   project   = var.project_name
+
   replication {
-    automatic = true
+    user_managed {
+      replicas {
+        location = var.region
+      }
   }
+}
+
 }
 
 resource "google_secret_manager_secret_version" "ml-flow-pass-version-basic" {
@@ -61,7 +71,11 @@ resource "google_secret_manager_secret" "mlflow_database_url" {
   secret_id = "mlflow_database_url"
   project   = var.project_name
   replication {
-    automatic = true
+    user_managed {
+      replicas {
+        location = var.region
+      }
+  }
   }
 }
 

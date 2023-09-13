@@ -47,6 +47,10 @@ data "google_iam_policy" "mlflow-bucket-policy" {
       "serviceAccount:${google_service_account.bucket_object_creator.email}",
     ]
   }
+  binding {
+    role = "roles/storage.admin"
+    members = concat(var.bucket_users_list, ["serviceAccount:${google_service_account.cloudrun-mlflow.email}"])
+  }
 }
 
 resource "google_storage_bucket_iam_policy" "policy_bucket_object_create" {

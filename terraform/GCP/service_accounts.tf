@@ -21,7 +21,11 @@ resource "google_secret_manager_secret" "bucket_object_creator_account_key" {
   secret_id = "mlflow_service_account_key"
   project   = var.project_name
   replication {
-    automatic = true
+    user_managed {
+      replicas {
+        location = var.region
+      }
+  }
   }
 }
 

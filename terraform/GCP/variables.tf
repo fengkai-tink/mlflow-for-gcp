@@ -1,10 +1,10 @@
 variable "env" {
-  default     = "prod"
+  default     = "sandbox"
   description = "Name of the environment"
 }
 
 variable "project_name" {
-  default     = "test-ml-flow-terraform"
+  default     = "tink-ratchet-eu-x"
   description = "Full name of the project"
 }
 
@@ -14,7 +14,7 @@ variable "vpn_to_access_db" {
 }
 
 variable "region" {
-  default     = "europe-west2"
+  default     = "europe-west4"
   description = "GCP region that will be used for the project"
 }
 
@@ -24,6 +24,6 @@ variable "image_name" {
 }
 
 variable "bucket_users_list" {
-  default     = []
+  default     = ["user:fengkai.wan@tink.com"]
   description = "List of users "
 }

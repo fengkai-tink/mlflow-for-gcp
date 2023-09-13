@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "gcs" {
-    bucket = "example-for-terraform-mlflow"
-    prefix = "terraform/state"
+    bucket = "tf-state-tink-ratchet-eu-x"
+    prefix = "mlflow-state"
   }
-  required_version = ">= 1.5"
+  required_version = ">=1.4.5"
 }
 
 provider "google" {
